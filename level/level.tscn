@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhdle5wvcefxq"]
+[gd_scene load_steps=7 format=3 uid="uid://dhdle5wvcefxq"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_ry2tl"]
 [ext_resource type="Texture2D" uid="uid://8i5f2cy0rj1y" path="res://sprites.png" id="2_m7cxh"]
+[ext_resource type="Resource" uid="uid://c3qgddwluyyjt" path="res://cells/cell_map.tres" id="2_tnvpf"]
+[ext_resource type="PackedScene" uid="uid://btpfjo6y4bgbe" path="res://ui/ui_handler.tscn" id="4_i0gyv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_63v7p"]
 texture = ExtResource("2_m7cxh")
@@ -20,8 +22,8 @@ sources/0 = SubResource("TileSetAtlasSource_63v7p")
 [node name="Level" type="Node2D" node_paths=PackedStringArray("tilemap")]
 script = ExtResource("1_ry2tl")
 tilemap = NodePath("TileMap")
-player_pos = Vector2i(-4, 2)
-player_active_tool = 3
+all_tools = Array[int]([0, 2, 0])
+cell_map = ExtResource("2_tnvpf")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-24, -24)
@@ -35,3 +37,8 @@ layer_1/z_index = -1
 layer_1/tile_data = PackedInt32Array(-196607, 65536, 1, 131074, 131072, 2, -1, 131072, 1, 65534, 131072, 2)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="UIHandler" parent="." instance=ExtResource("4_i0gyv")]
+
+[connection signal="init_ui" from="." to="UIHandler" method="_on_tests_init_ui"]
+[connection signal="drag_and_drop_done" from="UIHandler" to="." method="_on_ui_handler_drag_and_drop_done"]

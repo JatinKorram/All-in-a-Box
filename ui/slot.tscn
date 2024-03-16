@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmo78p5urxp1g"]
+
+[ext_resource type="Texture2D" uid="uid://8i5f2cy0rj1y" path="res://sprites.png" id="1_mhhju"]
+
+[node name="Slot 0" type="Sprite2D"]
+scale = Vector2(3, 3)
+texture = ExtResource("1_mhhju")
+centered = false
+hframes = 4
+vframes = 4

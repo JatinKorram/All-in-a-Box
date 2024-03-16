@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://btpfjo6y4bgbe"]
+
+[ext_resource type="Script" path="res://ui/ui_handler.gd" id="1_ij7ab"]
+
+[node name="UIHandler" type="Control" node_paths=PackedStringArray("slots")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ij7ab")
+slots = NodePath("Slots")
+
+[node name="Slots" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 219.0
+offset_top = 17.0
+offset_right = 259.0
+offset_bottom = 57.0
