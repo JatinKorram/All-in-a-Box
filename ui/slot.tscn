@@ -2,8 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://8i5f2cy0rj1y" path="res://sprites.png" id="1_mhhju"]
 
-[node name="Slot 0" type="Sprite2D"]
+[node name="Panel" type="Panel"]
+z_index = 2
+z_as_relative = false
+offset_right = 16.0
+offset_bottom = 16.0
 scale = Vector2(3, 3)
+
+[node name="Slot 0" type="Sprite2D" parent="."]
 texture = ExtResource("1_mhhju")
 centered = false
 hframes = 4

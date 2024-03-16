@@ -22,7 +22,7 @@ sources/0 = SubResource("TileSetAtlasSource_63v7p")
 [node name="Level" type="Node2D" node_paths=PackedStringArray("tilemap")]
 script = ExtResource("1_ry2tl")
 tilemap = NodePath("TileMap")
-all_tools = Array[int]([0, 2])
+all_tools = Array[int]([0, 2, 0])
 cell_map = ExtResource("2_tnvpf")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -42,5 +42,4 @@ layer_1/tile_data = PackedInt32Array(-196607, 65536, 1, 131074, 131072, 2, -1, 1
 
 [connection signal="init_ui" from="." to="UIHandler" method="_on_tests_init_ui"]
 [connection signal="inventory_interaction" from="." to="UIHandler" method="_on_level_inventory_interaction"]
-[connection signal="player_moved" from="." to="UIHandler" method="_on_level_player_moved"]
 [connection signal="drag_and_drop_done" from="UIHandler" to="." method="_on_ui_handler_drag_and_drop_done"]
