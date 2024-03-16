@@ -18,7 +18,7 @@ var cell_size: float = 0.0
 var paused: bool = false
 
 signal init_ui(all_tools: Array[Tool], cell_size: float)
-signal toggle_inventory_ui(player_pos: Vector2, inventory_pos: Vector2)
+signal inventory_interaction(player_pos: Vector2, inventory_pos: Vector2)
 
 func _ready():
 	player_pos = tilemap.get_used_cells_by_id(0, -1, cell_map.PLAYER)[0]
@@ -54,13 +54,13 @@ func succeed():
 
 func interact():
 	if tilemap.get_cell_atlas_coords(0, player_pos + Vector2i.UP) == cell_map.INVENTORY:
-		toggle_inventory_ui.emit(player_pos * cell_size, (player_pos + Vector2i.UP) * cell_size)
+		inventory_interaction.emit(player_pos * cell_size, (player_pos + Vector2i.UP) * cell_size)
 	if tilemap.get_cell_atlas_coords(0, player_pos + Vector2i.DOWN) == cell_map.INVENTORY:
-		toggle_inventory_ui.emit(player_pos * cell_size, (player_pos + Vector2i.DOWN) * cell_size)
+		inventory_interaction.emit(player_pos * cell_size, (player_pos + Vector2i.DOWN) * cell_size)
 	if tilemap.get_cell_atlas_coords(0, player_pos + Vector2i.LEFT) == cell_map.INVENTORY:
-		toggle_inventory_ui.emit(player_pos * cell_size, (player_pos + Vector2i.LEFT) * cell_size)
+		inventory_interaction.emit(player_pos * cell_size, (player_pos + Vector2i.LEFT) * cell_size)
 	if tilemap.get_cell_atlas_coords(0, player_pos + Vector2i.RIGHT) == cell_map.INVENTORY:
-		toggle_inventory_ui.emit(player_pos * cell_size, (player_pos + Vector2i.RIGHT) * cell_size)
+		inventory_interaction.emit(player_pos * cell_size, (player_pos + Vector2i.RIGHT) * cell_size)
 	
 	if all_tools[0] != Tool.KEY:
 		return

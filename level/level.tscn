@@ -41,4 +41,5 @@ layer_1/tile_data = PackedInt32Array(-196607, 65536, 1, 131074, 131072, 2, -1, 1
 [node name="UIHandler" parent="." instance=ExtResource("4_i0gyv")]
 
 [connection signal="init_ui" from="." to="UIHandler" method="_on_tests_init_ui"]
+[connection signal="inventory_interaction" from="." to="UIHandler" method="_on_level_inventory_interaction"]
 [connection signal="drag_and_drop_done" from="UIHandler" to="." method="_on_ui_handler_drag_and_drop_done"]

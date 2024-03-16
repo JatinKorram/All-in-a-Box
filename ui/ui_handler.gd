@@ -16,11 +16,8 @@ signal drag_and_drop_done(from_slot: int, to_slot: int)
 func _on_tests_init_ui(all_tools: Array[Level.Tool], cell_size: float):
 	slot_sprite_size = cell_size / 3
 	slot_sprites.resize(all_tools.size() + 1)
-	var x_offset: float = 0.0
 	for i in range(0, all_tools.size()):
 		var slot_sprite: Sprite2D = slot_resource.instantiate()
-		slot_sprite.position.x = x_offset
-		x_offset += cell_size
 		slot_sprite.frame_coords = tool_to_atlas_coords(all_tools[i])
 		slot_sprites[i] = slot_sprite
 		slots.add_child(slot_sprite)
@@ -68,3 +65,13 @@ func tool_to_atlas_coords(tool: Level.Tool) -> Vector2i:
 	if tool == Level.Tool.HOVER:
 		return Vector2i(3, 2)
 	return Vector2i(0, 2)
+
+func _on_level_inventory_interaction(player_pos, inventory_pos):
+	slots.visible = not slots.visible
+	if slots.visible:
+		var cell_size: float = slot_sprite_size * 3
+		slot_sprites[0].global_position = player_pos + Vector2(-cell_size / 2, cell_size/2)
+		var x_offset: float = 0.0
+		for i in range(1, slot_sprites.size() - 1):
+			slot_sprites[i].global_position = inventory_pos + Vector2(x_offset - cell_size / 2, -cell_size * 3/2)
+			x_offset += cell_size

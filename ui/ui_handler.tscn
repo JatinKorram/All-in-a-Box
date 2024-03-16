@@ -11,9 +11,8 @@ script = ExtResource("1_ij7ab")
 slots = NodePath("Slots")
 
 [node name="Slots" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = 219.0
-offset_top = 17.0
-offset_right = 259.0
-offset_bottom = 57.0
+offset_right = 40.0
+offset_bottom = 40.0
