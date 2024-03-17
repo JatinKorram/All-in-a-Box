@@ -120,7 +120,6 @@ func pause():
 	get_tree().paused = true
 
 func fail():
-	level_failed.emit()
 	pause()
 
 func succeed():
