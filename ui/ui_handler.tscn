@@ -89,76 +89,40 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="W" type="Panel" parent="InteractionUI/Keys"]
-z_index = 2
-z_as_relative = false
-layout_mode = 0
-offset_top = -48.0
-offset_right = 16.0
-offset_bottom = -32.0
-scale = Vector2(3, 3)
-
-[node name="Slot 0" type="Sprite2D" parent="InteractionUI/Keys/W"]
+[node name="W" type="Sprite2D" parent="InteractionUI/Keys"]
 z_index = 1
-position = Vector2(4, 4)
-scale = Vector2(0.5, 0.5)
+position = Vector2(12, -36)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_gvd2e")
 centered = false
 hframes = 5
 vframes = 4
 frame = 15
 
-[node name="S" type="Panel" parent="InteractionUI/Keys"]
-z_index = 2
-z_as_relative = false
-layout_mode = 0
-offset_top = 48.0
-offset_right = 16.0
-offset_bottom = 64.0
-scale = Vector2(3, 3)
-
-[node name="Slot 0" type="Sprite2D" parent="InteractionUI/Keys/S"]
+[node name="S" type="Sprite2D" parent="InteractionUI/Keys"]
 z_index = 1
-position = Vector2(4, 4)
-scale = Vector2(0.5, 0.5)
+position = Vector2(12, 60)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_gvd2e")
 centered = false
 hframes = 5
 vframes = 4
 frame = 16
 
-[node name="A" type="Panel" parent="InteractionUI/Keys"]
-z_index = 2
-z_as_relative = false
-layout_mode = 0
-offset_left = -48.0
-offset_right = -32.0
-offset_bottom = 16.0
-scale = Vector2(3, 3)
-
-[node name="Slot 0" type="Sprite2D" parent="InteractionUI/Keys/A"]
+[node name="A" type="Sprite2D" parent="InteractionUI/Keys"]
 z_index = 1
-position = Vector2(4, 4)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-36, 12)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_gvd2e")
 centered = false
 hframes = 5
 vframes = 4
 frame = 18
 
-[node name="D" type="Panel" parent="InteractionUI/Keys"]
-z_index = 2
-z_as_relative = false
-layout_mode = 0
-offset_left = 48.0
-offset_right = 64.0
-offset_bottom = 16.0
-scale = Vector2(3, 3)
-
-[node name="Slot 0" type="Sprite2D" parent="InteractionUI/Keys/D"]
+[node name="D" type="Sprite2D" parent="InteractionUI/Keys"]
 z_index = 1
-position = Vector2(4, 4)
-scale = Vector2(0.5, 0.5)
+position = Vector2(60, 12)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_gvd2e")
 centered = false
 hframes = 5

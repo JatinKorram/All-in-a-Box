@@ -7,10 +7,10 @@ class_name UIHandler
 @onready var fail_label: Label = $"FailLabel"
 @onready var interaction_ui: Control = $"InteractionUI"
 @onready var interaction_ui_keys: Control = $"InteractionUI/Keys"
-@onready var interaction_ui_key_w: Control = $"InteractionUI/Keys/W"
-@onready var interaction_ui_key_s: Control = $"InteractionUI/Keys/S"
-@onready var interaction_ui_key_a: Control = $"InteractionUI/Keys/A"
-@onready var interaction_ui_key_d: Control = $"InteractionUI/Keys/D"
+@onready var interaction_ui_key_w: Sprite2D = $"InteractionUI/Keys/W"
+@onready var interaction_ui_key_s: Sprite2D = $"InteractionUI/Keys/S"
+@onready var interaction_ui_key_a: Sprite2D = $"InteractionUI/Keys/A"
+@onready var interaction_ui_key_d: Sprite2D = $"InteractionUI/Keys/D"
 @onready var interaction_popup: Control = $"InteractionPopup"
 
 var slot_sprites: Array[Sprite2D] = []
