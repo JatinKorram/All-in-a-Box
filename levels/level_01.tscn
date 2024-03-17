@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ds56lmbrej36c"]
+[gd_scene load_steps=6 format=3 uid="uid://ds56lmbrej36c"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_hsd17"]
 [ext_resource type="Resource" uid="uid://c3qgddwluyyjt" path="res://cells/cell_map.tres" id="2_4ru0m"]
 [ext_resource type="TileSet" uid="uid://cph523pgbiqxx" path="res://default_tileset.tres" id="3_gwhv8"]
 [ext_resource type="PackedScene" uid="uid://btpfjo6y4bgbe" path="res://ui/ui_handler.tscn" id="4_vg242"]
+[ext_resource type="Texture2D" uid="uid://cxlcxl8l0qho4" path="res://ui/01.png" id="5_81e3f"]
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("tilemap")]
 script = ExtResource("1_hsd17")
@@ -27,6 +28,14 @@ layer_2/tile_data = PackedInt32Array(1, 131073, 1, -65535, 131073, 2, -131071, 1
 
 [node name="UIHandler" parent="." instance=ExtResource("4_vg242")]
 next_level_name = "level_02"
+
+[node name="Level Number" type="TextureRect" parent="."]
+offset_left = 529.0
+offset_top = 277.0
+offset_right = 549.0
+offset_bottom = 297.0
+scale = Vector2(2, 2)
+texture = ExtResource("5_81e3f")
 
 [connection signal="init_ui" from="." to="UIHandler" method="_on_tests_init_ui"]
 [connection signal="interaction_choice_given" from="." to="UIHandler" method="_on_level_interaction_choice_given"]
