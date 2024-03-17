@@ -3,6 +3,15 @@ class_name UIHandler
 
 @export var slots: Control = null
 @export var next_button: Button = null
+@export var next_level_name: String = ""
+@onready var fail_label: Label = $"FailLabel"
+@onready var interaction_ui: Control = $"InteractionUI"
+@onready var interaction_ui_keys: Control = $"InteractionUI/Keys"
+@onready var interaction_ui_key_w: Control = $"InteractionUI/Keys/W"
+@onready var interaction_ui_key_s: Control = $"InteractionUI/Keys/S"
+@onready var interaction_ui_key_a: Control = $"InteractionUI/Keys/A"
+@onready var interaction_ui_key_d: Control = $"InteractionUI/Keys/D"
+@onready var interaction_popup: Control = $"InteractionPopup"
 
 var slot_sprites: Array[Sprite2D] = []
 var slot_sprite_size: float = 0
@@ -80,33 +89,43 @@ func tool_to_atlas_coords(tool: Level.Tool) -> Vector2i:
 
 func _on_level_inventory_interaction(player_pos: Vector2, inventory_pos: Vector2, direction_from_player: Vector2):
 	slots.visible = not slots.visible
+	interaction_popup.visible = not interaction_ui.visible and not slots.visible
 	if slots.visible:
 		var cell_size: float = slot_sprite_size * 3
+		slot_sprites[0].get_parent().get_child(1).visible = true
+		slot_sprites[0].get_parent().size = Vector2(16, 16)
+		slot_sprites[0].scale = Vector2(1, 1)
 		if direction_from_player == Vector2.LEFT:
 			slot_sprites[0].get_parent().global_position = player_pos + Vector2(-cell_size / 2, cell_size / 2)
-			var x_offset: float = -cell_size * (slot_sprites.size() - 3)
+			var x_offset: float = -(cell_size + 12) * (slot_sprites.size() - 3)
 			for i in range(1, slot_sprites.size() - 1):
 				slot_sprites[i].get_parent().global_position = inventory_pos + Vector2(x_offset - cell_size / 2, -cell_size * 3/2)
-				x_offset += cell_size
+				slot_sprites[i].get_parent().get_child(1).visible = true
+				x_offset += cell_size + 12
 		elif direction_from_player == Vector2.DOWN:
 			slot_sprites[0].get_parent().global_position = player_pos + Vector2(-cell_size / 2, -cell_size * 3/2)
 			var x_offset: float = 0.0
 			for i in range(1, slot_sprites.size() - 1):
 				slot_sprites[i].get_parent().global_position = inventory_pos + Vector2(x_offset - cell_size / 2, cell_size / 2)
-				x_offset += cell_size
+				slot_sprites[i].get_parent().get_child(1).visible = true
+				x_offset += cell_size + 12
 		else:
 			slot_sprites[0].get_parent().global_position = player_pos + Vector2(-cell_size / 2, cell_size / 2)
 			var x_offset: float = 0.0
 			for i in range(1, slot_sprites.size() - 1):
 				slot_sprites[i].get_parent().global_position = inventory_pos + Vector2(x_offset - cell_size / 2, -cell_size * 3/2)
-				x_offset += cell_size
-
-func _on_level_player_moved(player_pos: Vector2, inventory_below: bool):
-	if inventory_below:
-		var cell_size: float = slot_sprite_size * 3
-		slot_sprites[0].get_parent().global_position = player_pos + Vector2(-cell_size / 2, -cell_size * 3/2)
+				slot_sprites[i].get_parent().get_child(1).visible = true
+				x_offset += cell_size + 12
 	else:
-		slot_sprites[0].get_parent().global_position = player_pos + Vector2(-1, 1) * slot_sprite_size * 3/2
+		slot_sprites[0].get_parent().get_child(1).visible = false
+		slot_sprites[0].get_parent().global_position = player_pos
+		slot_sprites[0].get_parent().size = Vector2(12, 12)
+		slot_sprites[0].scale = Vector2(0.75, 0.75)
+
+func _on_level_player_moved(player_pos: Vector2, _inventory_below: bool):
+	slot_sprites[0].get_parent().global_position = player_pos
+	slot_sprites[0].get_parent().size = Vector2(12, 12)
+	slot_sprites[0].scale = Vector2(0.75, 0.75)
 
 func _on_level_level_finished():
 	next_button.visible = true
@@ -114,3 +133,23 @@ func _on_level_level_finished():
 func _on_restart_button_pressed():
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+func _on_next_button_pressed():
+	get_tree().change_scene_to_file("res://levels/" + next_level_name + ".tscn")
+
+func _on_level_level_failed():
+	fail_label.visible = true
+
+func _on_level_interaction_choice_given(player_pos: Vector2, interaction_up: bool, interaction_down: bool, interaction_left: bool, interaction_right: bool):
+	slot_sprites[0].get_parent().visible = interaction_ui.visible
+	interaction_ui.visible = not interaction_ui.visible
+	interaction_ui_key_w.visible = interaction_up
+	interaction_ui_key_s.visible = interaction_down
+	interaction_ui_key_a.visible = interaction_left
+	interaction_ui_key_d.visible = interaction_right
+	interaction_ui_keys.global_position = player_pos - Vector2.ONE * slot_sprite_size * 3/2
+
+func _on_level_interaction_available(player_pos: Vector2, available: bool):
+	interaction_popup.visible = available and not interaction_ui.visible and not slots.visible
+	if interaction_popup.visible:
+		interaction_popup.global_position = player_pos - Vector2.ONE * slot_sprite_size * 3/2

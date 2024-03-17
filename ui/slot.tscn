@@ -12,5 +12,14 @@ scale = Vector2(3, 3)
 [node name="Slot 0" type="Sprite2D" parent="."]
 texture = ExtResource("1_mhhju")
 centered = false
-hframes = 4
+hframes = 5
 vframes = 4
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 18.0
+offset_bottom = 18.0

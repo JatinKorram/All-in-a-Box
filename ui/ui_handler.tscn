@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://btpfjo6y4bgbe"]
+[gd_scene load_steps=6 format=3 uid="uid://btpfjo6y4bgbe"]
 
 [ext_resource type="Script" path="res://ui/ui_handler.gd" id="1_ij7ab"]
 [ext_resource type="Texture2D" uid="uid://rkuqkxmhumfc" path="res://ui/restart.png" id="2_oabyq"]
 [ext_resource type="Texture2D" uid="uid://bfsqscw5sf48r" path="res://ui/next.png" id="3_ft3xf"]
+[ext_resource type="Texture2D" uid="uid://8i5f2cy0rj1y" path="res://sprites.png" id="4_gvd2e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ic3ce"]
+font_size = 48
+font_color = Color(0.858824, 1, 0.921569, 1)
 
 [node name="UIHandler" type="Control" node_paths=PackedStringArray("slots", "next_button")]
 process_mode = 3
@@ -42,9 +47,136 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Background" type="Panel" parent="Slots"]
+visible = false
 z_index = -1
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
+[node name="FailLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 529.0
+offset_right = 628.0
+offset_bottom = 67.0
+text = "FAIL"
+label_settings = SubResource("LabelSettings_ic3ce")
+
+[node name="InteractionUI" type="Control" parent="."]
+visible = false
+z_index = 4
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="Panel" parent="InteractionUI"]
+z_index = -1
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Keys" type="Control" parent="InteractionUI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="W" type="Panel" parent="InteractionUI/Keys"]
+z_index = 2
+z_as_relative = false
+layout_mode = 0
+offset_top = -48.0
+offset_right = 16.0
+offset_bottom = -32.0
+scale = Vector2(3, 3)
+
+[node name="Slot 0" type="Sprite2D" parent="InteractionUI/Keys/W"]
+z_index = 1
+position = Vector2(4, 4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_gvd2e")
+centered = false
+hframes = 5
+vframes = 4
+frame = 15
+
+[node name="S" type="Panel" parent="InteractionUI/Keys"]
+z_index = 2
+z_as_relative = false
+layout_mode = 0
+offset_top = 48.0
+offset_right = 16.0
+offset_bottom = 64.0
+scale = Vector2(3, 3)
+
+[node name="Slot 0" type="Sprite2D" parent="InteractionUI/Keys/S"]
+z_index = 1
+position = Vector2(4, 4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_gvd2e")
+centered = false
+hframes = 5
+vframes = 4
+frame = 16
+
+[node name="A" type="Panel" parent="InteractionUI/Keys"]
+z_index = 2
+z_as_relative = false
+layout_mode = 0
+offset_left = -48.0
+offset_right = -32.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+
+[node name="Slot 0" type="Sprite2D" parent="InteractionUI/Keys/A"]
+z_index = 1
+position = Vector2(4, 4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_gvd2e")
+centered = false
+hframes = 5
+vframes = 4
+frame = 18
+
+[node name="D" type="Panel" parent="InteractionUI/Keys"]
+z_index = 2
+z_as_relative = false
+layout_mode = 0
+offset_left = 48.0
+offset_right = 64.0
+offset_bottom = 16.0
+scale = Vector2(3, 3)
+
+[node name="Slot 0" type="Sprite2D" parent="InteractionUI/Keys/D"]
+z_index = 1
+position = Vector2(4, 4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_gvd2e")
+centered = false
+hframes = 5
+vframes = 4
+frame = 17
+
+[node name="InteractionPopup" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="Panel" parent="InteractionPopup"]
+z_index = 2
+z_as_relative = false
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(3, 3)
+
+[node name="Slot 0" type="Sprite2D" parent="InteractionPopup/Background"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_gvd2e")
+centered = false
+hframes = 5
+vframes = 4
+frame = 19
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
