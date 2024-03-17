@@ -1,23 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvhs6inasa222"]
+[gd_scene load_steps=5 format=3 uid="uid://bvhs6inasa222"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_pcj05"]
 [ext_resource type="Resource" uid="uid://c3qgddwluyyjt" path="res://cells/cell_map.tres" id="2_y3g0c"]
-[ext_resource type="Texture2D" uid="uid://8i5f2cy0rj1y" path="res://sprites.png" id="3_qkpis"]
+[ext_resource type="TileSet" uid="uid://cph523pgbiqxx" path="res://default_tileset.tres" id="3_ne527"]
 [ext_resource type="PackedScene" uid="uid://btpfjo6y4bgbe" path="res://ui/ui_handler.tscn" id="4_jyu5m"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_63v7p"]
-texture = ExtResource("3_qkpis")
-0:0/0 = 0
-1:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:0/0 = 0
-2:1/0 = 0
-2:2/0 = 0
-1:2/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_jjdb2"]
-sources/0 = SubResource("TileSetAtlasSource_63v7p")
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("tilemap")]
 script = ExtResource("1_pcj05")
@@ -28,7 +14,7 @@ cell_map = ExtResource("2_y3g0c")
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-24, -24)
 scale = Vector2(3, 3)
-tile_set = SubResource("TileSet_jjdb2")
+tile_set = ExtResource("3_ne527")
 format = 2
 layer_0/name = "Collision"
 layer_0/tile_data = PackedInt32Array(-65532, 0, 1, -65531, 0, 1, -65530, 0, 1, -65529, 0, 1, 7, 0, 1, 65543, 0, 1, 65542, 0, 1, 65541, 0, 1, 65540, 0, 1, -2, 0, 1, -65538, 0, 1, -131074, 0, 1, -131073, 0, 1, -196608, 0, 1, -196607, 0, 1, -196606, 0, 1, -131070, 0, 1, -65534, 0, 1, -65533, 0, 1, 65537, 0, 1, 65538, 0, 1, 65539, 0, 1, 196606, 0, 1, 131072, 0, 1, -1, 0, 0, 65531, 0, 1, 131067, 0, 1, 65532, 0, 1, 131068, 65536, 0, 196603, 0, 1, 196604, 0, 1, 65533, 0, 1, 196605, 0, 1, 65534, 0, 1, -65536, 65536, 2, 1, 65536, 2, 0, 131072, 0, 131073, 0, 1, 196607, 0, 1, 65535, 0, 0)
