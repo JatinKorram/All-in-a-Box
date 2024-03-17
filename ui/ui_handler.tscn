@@ -26,25 +26,32 @@ next_button = NodePath("NextButton")
 visible = false
 layout_mode = 0
 offset_left = 80.0
-offset_right = 104.0
+offset_top = -4.0
+offset_right = 108.0
 offset_bottom = 24.0
 scale = Vector2(3, 3)
 icon = ExtResource("3_ft3xf")
+flat = true
 
 [node name="RestartButton" type="Button" parent="."]
 layout_mode = 0
-offset_right = 24.0
-offset_bottom = 24.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 22.0
+offset_bottom = 22.0
 scale = Vector2(3, 3)
 icon = ExtResource("2_oabyq")
+flat = true
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1084.0
-offset_right = 1108.0
+offset_left = 1076.0
+offset_top = -4.0
+offset_right = 1104.0
 offset_bottom = 24.0
 scale = Vector2(3, 3)
 icon = ExtResource("4_66g7j")
+flat = true
 
 [node name="Slots" type="Control" parent="."]
 process_mode = 3
