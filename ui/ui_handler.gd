@@ -27,7 +27,7 @@ func _on_tests_init_ui(all_tools: Array[Level.Tool], cell_size: float):
 	slot_sprite_size = cell_size / 3
 	slot_sprites.resize(all_tools.size() + 1)
 	for i in range(0, all_tools.size()):
-		var slot_panel: Panel = slot_resource.instantiate()
+		var slot_panel: NinePatchRect = slot_resource.instantiate()
 		var slot_sprite: Sprite2D = slot_panel.get_child(0)
 		slot_sprite.frame_coords = tool_to_atlas_coords(all_tools[i])
 		slot_sprites[i] = slot_sprite
@@ -92,40 +92,38 @@ func _on_level_inventory_interaction(player_pos: Vector2, inventory_pos: Vector2
 	interaction_popup.visible = not interaction_ui.visible and not slots.visible
 	if slots.visible:
 		var cell_size: float = slot_sprite_size * 3
-		slot_sprites[0].get_parent().get_child(1).visible = true
-		slot_sprites[0].get_parent().size = Vector2(16, 16)
+		slot_sprites[0].get_parent().visible = true
+		slot_sprites[0].get_parent().size = Vector2(20, 20)
 		slot_sprites[0].scale = Vector2(1, 1)
 		if direction_from_player == Vector2.LEFT:
 			slot_sprites[0].get_parent().global_position = player_pos + Vector2(-cell_size / 2, cell_size / 2)
 			var x_offset: float = -(cell_size + 12) * (slot_sprites.size() - 3)
 			for i in range(1, slot_sprites.size() - 1):
 				slot_sprites[i].get_parent().global_position = inventory_pos + Vector2(x_offset - cell_size / 2, -cell_size * 3/2)
-				slot_sprites[i].get_parent().get_child(1).visible = true
 				x_offset += cell_size + 12
 		elif direction_from_player == Vector2.DOWN:
 			slot_sprites[0].get_parent().global_position = player_pos + Vector2(-cell_size / 2, -cell_size * 3/2)
 			var x_offset: float = 0.0
 			for i in range(1, slot_sprites.size() - 1):
 				slot_sprites[i].get_parent().global_position = inventory_pos + Vector2(x_offset - cell_size / 2, cell_size / 2)
-				slot_sprites[i].get_parent().get_child(1).visible = true
 				x_offset += cell_size + 12
 		else:
 			slot_sprites[0].get_parent().global_position = player_pos + Vector2(-cell_size / 2, cell_size / 2)
 			var x_offset: float = 0.0
 			for i in range(1, slot_sprites.size() - 1):
 				slot_sprites[i].get_parent().global_position = inventory_pos + Vector2(x_offset - cell_size / 2, -cell_size * 3/2)
-				slot_sprites[i].get_parent().get_child(1).visible = true
 				x_offset += cell_size + 12
 	else:
-		slot_sprites[0].get_parent().get_child(1).visible = false
-		slot_sprites[0].get_parent().global_position = player_pos
+		slot_sprites[0].get_parent().visible = slot_sprites[0].frame_coords != Vector2i(0, 2)
+		slot_sprites[0].get_parent().global_position = player_pos + Vector2.DOWN * 6
 		slot_sprites[0].get_parent().size = Vector2(12, 12)
-		slot_sprites[0].scale = Vector2(0.75, 0.75)
+		slot_sprites[0].scale = Vector2(0.5, 0.5)
 
 func _on_level_player_moved(player_pos: Vector2, _inventory_below: bool):
-	slot_sprites[0].get_parent().global_position = player_pos
+	slot_sprites[0].get_parent().visible = slot_sprites[0].frame_coords != Vector2i(0, 2)
+	slot_sprites[0].get_parent().global_position = player_pos + Vector2.DOWN * 6
 	slot_sprites[0].get_parent().size = Vector2(12, 12)
-	slot_sprites[0].scale = Vector2(0.75, 0.75)
+	slot_sprites[0].scale = Vector2(0.5, 0.5)
 
 func _on_level_level_finished():
 	next_button.visible = true
