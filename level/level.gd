@@ -13,6 +13,7 @@ enum Tool {
 # 0 = Player, Rest = Inventory 
 @export var all_tools: Array[Tool] = [Tool.NONE]
 @export var cell_map: CellMap
+@export var main_menu: bool = false
 
 var player_pos: Vector2i = Vector2i.ZERO
 var cell_size: float = 0.0
@@ -30,7 +31,8 @@ signal interaction_available(player_pos: Vector2, available: bool)
 
 func _ready():
 	get_tree().paused = false
-	interaction_available.connect(($"UIHandler" as UIHandler)._on_level_interaction_available)
+	if not main_menu:
+		interaction_available.connect(($"UIHandler" as UIHandler)._on_level_interaction_available)
 	
 	var player_cells: Array[Vector2i] = tilemap.get_used_cells_by_id(0, -1, cell_map.PLAYER)
 	if player_cells.size() == 0:
@@ -111,8 +113,7 @@ func _process(_delta):
 			inventory_interaction.emit(player_pos * cell_size, Vector2.ZERO, Vector2.ZERO)
 			inventory_mode = not inventory_mode
 			return
-		pause()
-		# Show pause UI
+		($"UIHandler" as UIHandler)._on_back_button_pressed()
 
 func pause():
 	paused = true

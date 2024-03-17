@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://btpfjo6y4bgbe"]
+[gd_scene load_steps=7 format=3 uid="uid://btpfjo6y4bgbe"]
 
 [ext_resource type="Script" path="res://ui/ui_handler.gd" id="1_ij7ab"]
 [ext_resource type="Texture2D" uid="uid://rkuqkxmhumfc" path="res://ui/restart.png" id="2_oabyq"]
 [ext_resource type="Texture2D" uid="uid://bfsqscw5sf48r" path="res://ui/next.png" id="3_ft3xf"]
+[ext_resource type="Texture2D" uid="uid://25u7ex11gcsf" path="res://ui/exit.png" id="4_66g7j"]
 [ext_resource type="Texture2D" uid="uid://8i5f2cy0rj1y" path="res://sprites.png" id="4_gvd2e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ic3ce"]
@@ -36,6 +37,14 @@ offset_right = 24.0
 offset_bottom = 24.0
 scale = Vector2(3, 3)
 icon = ExtResource("2_oabyq")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1084.0
+offset_right = 1108.0
+offset_bottom = 24.0
+scale = Vector2(3, 3)
+icon = ExtResource("4_66g7j")
 
 [node name="Slots" type="Control" parent="."]
 process_mode = 3
@@ -180,3 +189,4 @@ frame = 19
 
 [connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

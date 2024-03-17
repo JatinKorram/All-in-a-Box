@@ -39,6 +39,7 @@ layer_1/tile_data = PackedInt32Array(0, 131072, 1, 1, 131072, 1, 65540, 65536, 1
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="UIHandler" parent="." instance=ExtResource("4_f7c8h")]
+next_level_name = "level_09"
 
 [connection signal="init_ui" from="." to="UIHandler" method="_on_tests_init_ui"]
 [connection signal="interaction_choice_given" from="." to="UIHandler" method="_on_level_interaction_choice_given"]

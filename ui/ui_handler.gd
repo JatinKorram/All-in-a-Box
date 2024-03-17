@@ -153,3 +153,6 @@ func _on_level_interaction_available(player_pos: Vector2, available: bool):
 	interaction_popup.visible = available and not interaction_ui.visible and not slots.visible
 	if interaction_popup.visible:
 		interaction_popup.global_position = player_pos - Vector2.ONE * slot_sprite_size * 3/2
+
+func _on_back_button_pressed():
+	get_tree().change_scene_to_file("res://levels/main_menu.tscn")
