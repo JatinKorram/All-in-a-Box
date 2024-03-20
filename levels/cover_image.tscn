@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dres1i1dlk3bk"]
+
+[ext_resource type="TileSet" uid="uid://cph523pgbiqxx" path="res://default_tileset.tres" id="1_6ups7"]
+
+[node name="CoverImage" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-24, -24)
+scale = Vector2(3, 3)
+tile_set = ExtResource("1_6ups7")
+format = 2
+layer_0/name = "Collision"
+layer_1/name = "Collisionless"
+layer_1/z_index = -1
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Wall Visuals"
+layer_2/tile_data = PackedInt32Array(-262147, 1, 0, -196611, 131073, 2, -131075, 131073, 2, 131069, 1, 0, 196605, 131073, 2, 262141, 131073, 2, -262146, 65537, 0, -196610, 65536, 2, -131074, 131073, 3, 131070, 65537, 0, 196606, 131072, 1, 262142, 131073, 3, 65538, 1, 0, 131074, 131073, 2, 196610, 131073, 2, 262146, 131073, 2, 327682, 1, 1, 131075, 65536, 1, 262147, 0, 0, -65539, 65537, 2, 327677, 65537, 2, 65534, 65536, 0, -262145, 131073, 0, -196609, 131073, 2, -131073, 131073, 2, -65537, 65537, 2, 131071, 131073, 0, 196607, 131073, 2, 262143, 131073, 2, 327679, 65537, 2, -327678, 131072, 0, -196606, 1, 2, -131070, 65537, 2, 65539, 65537, 3, 196611, 131073, 3, 327683, 65537, 3, 131076, 131073, 3, 262148, 131073, 3, -262142, 131072, 2)
+
+[node name="Camera2D" type="Camera2D" parent="."]
