@@ -14,7 +14,7 @@ var current_contents: Control = null
 
 func _enter_tree():
 	if mode_contents.size() != UIMode.size():
-		print_debug("[UI] Not all UI modes have been mapped to a scene")
+		print_debug("[UI] The number of UI scenes added is not equal to the number of UI modes!")
 
 func _load_contents(mode: UIMode) -> Control:
 	if mode == current_mode:

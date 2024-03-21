@@ -13,5 +13,16 @@ static var instance: Game = null
 func _enter_tree():
 	instance = self
 
+func load_level(level_index: int) -> bool:
+	var level_contents = level_system._load_contents(level_index)
+	if level_contents == null:
+		return false
+	var ui_contents = ui_system._load_contents(level_system.levels[level_index].ui_mode)
+	if ui_contents == null:
+		return false
+	level_contents._setup(level_contents, ui_contents)
+	ui_contents._setup(level_contents, ui_contents)
+	return true
+
 func _ready():
-	level_system.load_level(0)
+	load_level(0)
