@@ -32,7 +32,6 @@ collision = true
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource("1_bl07q")
-cell_size = null
 
 [node name="LevelBuilder" type="Node2D" parent="."]
 scale = Vector2(3, 3)

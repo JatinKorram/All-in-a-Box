@@ -1,7 +1,7 @@
 extends Area2D
 class_name Player
 
-#@onready var level: Level = Game.get_level_contents()
+@onready var level: Level = Game.get_level_contents()
 
 func _process(_delta):
 	var direction: Vector2 = Vector2.ZERO
@@ -15,5 +15,4 @@ func _process(_delta):
 		direction = Vector2.RIGHT
 	if direction == Vector2.ZERO:
 		return
-	#if level.level_manipulator.push_cell(position / level.cell_size, Vector2i(direction)):
-		#position += direction * level.cell_size
+	level.level_manipulator.push_cell(position / level.cell_size, Vector2i(direction))

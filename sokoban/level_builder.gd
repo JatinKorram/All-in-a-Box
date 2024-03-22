@@ -6,9 +6,12 @@ class_name LevelBuilder
 
 var generated_nodes: Array[Area2D]
 
+# TODO: Make the target tilemap layer, the source id, and other stuff editable
+#		i.e. make them NOT hard-coded.
+
 func build(tilemap: TileMap, cell_size: int):
 	var cells: Array[Vector2i] = tilemap.get_used_cells_by_id(0)
-	# tilemap.set_layer_enabled(0, false)
+	tilemap.set_layer_enabled(0, false)
 	var tile_atlas: TileSetAtlasSource = tilemap.tile_set.get_source(0) as TileSetAtlasSource
 	var hframes: int = tile_atlas.texture.get_width() / cell_size
 	var vframes: int = tile_atlas.texture.get_height() / cell_size
