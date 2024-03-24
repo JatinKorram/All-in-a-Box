@@ -21,11 +21,15 @@ func _generate():
 	var vframes: int = tile_atlas.texture.get_height() / cell_size
 	var collision_shape: RectangleShape2D = RectangleShape2D.new()
 	collision_shape.size = Vector2.ONE * (cell_size - generated_colliders_padding)
+	var collision_shape_offset: Vector2 = Vector2.ONE * cell_size / 2
 	for cell: Vector2i in cells:
 		var atlas_coords: Vector2i = get_cell_atlas_coords(template_layer, cell)
 		for tile: TileInfo in info_map.tiles:
 			if atlas_coords == tile.atlas_coords:
 				var node: GeneratedTile = GeneratedTile.new()
+				if tile.attached_script != null:
+					node.set_script(tile.attached_script)
+				node.grid_position = cell
 				node.position = cell * cell_size
 				if tile.is_trigger:
 					node.monitorable = false
@@ -33,14 +37,13 @@ func _generate():
 					node.monitoring = false
 				node.collision_layer = tile.collision_layer
 				node.collision_mask = tile.collision_mask
-				if tile.attached_script != null:
-					node.set_script(tile.attached_script)
-				node.grid_position = cell
 				add_child(node)
 				var shape: CollisionShape2D = CollisionShape2D.new()
 				shape.shape = collision_shape
-				shape.position += Vector2.ONE * cell_size / 2
+				shape.position += collision_shape_offset
 				node.add_child(shape)
+				if tile.is_invisible:
+					break
 				var sprite: Sprite2D = Sprite2D.new()
 				sprite.hframes = hframes
 				sprite.vframes = vframes

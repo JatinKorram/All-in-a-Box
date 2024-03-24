@@ -7,6 +7,7 @@ class_name TileInfo
 
 @export_group("Visual")
 @export var z_index: int = 0
+@export var is_invisible: bool = false
 
 @export_group("Physics")
 @export var is_trigger: bool = false
