@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="TileInfoMap" load_steps=9 format=3 uid="uid://bvt2tj2fdo8lb"]
+[gd_resource type="Resource" script_class="TileInfoMap" load_steps=12 format=3 uid="uid://bvt2tj2fdo8lb"]
 
 [ext_resource type="Script" path="res://sokoban/tile_info_map.gd" id="1_ek41k"]
 [ext_resource type="Script" path="res://test_resources/tiles/player.gd" id="2_go6c0"]
 [ext_resource type="Script" path="res://sokoban/tile_info.gd" id="3_klox5"]
 [ext_resource type="Script" path="res://test_resources/tiles/flag.gd" id="4_b0n51"]
+[ext_resource type="Script" path="res://test_resources/tiles/inventory.gd" id="5_u0u0f"]
+[ext_resource type="Script" path="res://test_resources/tiles/spikes.gd" id="6_udmnp"]
 
 [sub_resource type="Resource" id="Resource_mq5yk"]
 script = ExtResource("3_klox5")
@@ -11,8 +13,8 @@ name = "Player"
 attached_script = ExtResource("2_go6c0")
 atlas_coords = Vector2i(1, 0)
 z_index = 0
-invisible = false
-is_trigger = false
+is_invisible = null
+is_trigger = null
 collision_layer = 2
 collision_mask = 0
 
@@ -22,7 +24,7 @@ name = "Flag"
 attached_script = ExtResource("4_b0n51")
 atlas_coords = Vector2i(1, 1)
 z_index = -1
-invisible = false
+is_invisible = null
 is_trigger = true
 collision_layer = 0
 collision_mask = 2
@@ -31,22 +33,34 @@ collision_mask = 2
 script = ExtResource("3_klox5")
 name = "Box"
 atlas_coords = Vector2i(0, 0)
-z_index = 0
-invisible = false
-is_trigger = false
-collision_layer = 1
+z_index = null
+is_invisible = null
+is_trigger = null
+collision_layer = null
 collision_mask = 0
 
 [sub_resource type="Resource" id="Resource_ofwfn"]
 script = ExtResource("3_klox5")
 name = "Inventory"
+attached_script = ExtResource("5_u0u0f")
 atlas_coords = Vector2i(2, 0)
-z_index = 0
-invisible = false
-is_trigger = false
-collision_layer = 1
+z_index = null
+is_invisible = null
+is_trigger = null
+collision_layer = 4
 collision_mask = 0
+
+[sub_resource type="Resource" id="Resource_kuudu"]
+script = ExtResource("3_klox5")
+name = "Spikes"
+attached_script = ExtResource("6_udmnp")
+atlas_coords = Vector2i(2, 1)
+z_index = -1
+is_invisible = false
+is_trigger = true
+collision_layer = 0
+collision_mask = 2
 
 [resource]
 script = ExtResource("1_ek41k")
-tiles = Array[ExtResource("3_klox5")]([SubResource("Resource_mq5yk"), SubResource("Resource_1xfiq"), SubResource("Resource_ioyel"), SubResource("Resource_ofwfn")])
+tiles = Array[ExtResource("3_klox5")]([SubResource("Resource_mq5yk"), SubResource("Resource_1xfiq"), SubResource("Resource_ioyel"), SubResource("Resource_ofwfn"), SubResource("Resource_kuudu")])

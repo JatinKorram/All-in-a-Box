@@ -10,6 +10,8 @@ static var instance: Game = null
 @export var level_system: LevelSystem
 @export var ui_system: UISystem
 
+signal level_loaded()
+
 signal level_setup()
 signal ui_setup()
 
@@ -31,8 +33,8 @@ func load_level(level_index: int) -> bool:
 		return false
 	level_setup.emit()
 	ui_setup.emit()
+	level_loaded.emit()
 	return true
 
 func _ready():
-	# NOTE: Change this back to 0 when done testing
-	load_level(1)
+	load_level(0)

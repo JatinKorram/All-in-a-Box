@@ -37,7 +37,6 @@ func _generate():
 					node.monitoring = false
 				node.collision_layer = tile.collision_layer
 				node.collision_mask = tile.collision_mask
-				add_child(node)
 				var shape: CollisionShape2D = CollisionShape2D.new()
 				shape.shape = collision_shape
 				shape.position += collision_shape_offset
@@ -52,6 +51,7 @@ func _generate():
 				sprite.z_index = tile.z_index
 				sprite.centered = false
 				node.add_child(sprite)
+				call_deferred("add_child", node)
 				break
 
 func push_cell(cell: Vector2i, direction: Vector2i) -> bool:

@@ -2,8 +2,17 @@ extends GeneratedTile
 class_name Player
 
 @onready var level: Level = Game.get_level_contents()
+@onready var interactor: GridBasedInteractor = GridBasedInteractor.new()
+
+func _ready():
+	# NOTE: Testing
+	interactor.interactable_layers = 4
+	#
+	add_child(interactor)
 
 func _process(_delta):
+	if interactor.interact_mode:
+		return
 	var direction: Vector2i = Vector2i.ZERO
 	if Input.is_action_just_pressed("move_up"):
 		direction = Vector2i.UP
