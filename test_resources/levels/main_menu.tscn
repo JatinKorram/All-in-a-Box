@@ -5,9 +5,9 @@
 [ext_resource type="Script" path="res://sokoban/world.gd" id="2_wsk7w"]
 [ext_resource type="Resource" uid="uid://bvt2tj2fdo8lb" path="res://test_resources/tiles/default_map.tres" id="3_rky10"]
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("contents")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("content")]
 script = ExtResource("1_op8jw")
-contents = NodePath("TileMap")
+content = NodePath("TileMap")
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(3, 3)

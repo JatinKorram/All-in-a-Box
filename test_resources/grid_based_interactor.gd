@@ -3,7 +3,7 @@ class_name GridBasedInteractor
 
 @export_flags_2d_physics var interactable_layers: int = 0
 
-@onready var world: World = Game.get_current_level_contents()
+@onready var world: World = Game.get_current_level_content()
 @onready var collision_shape: CollisionShape2D = CollisionShape2D.new()
 
 var interact_mode: bool = false

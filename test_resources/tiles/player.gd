@@ -1,7 +1,7 @@
 extends GeneratedTile
 class_name Player
 
-@onready var world: World = Game.get_current_level_contents()
+@onready var world: World = Game.get_current_level_content()
 @onready var interactor: GridBasedInteractor = GridBasedInteractor.new()
 
 func _ready():

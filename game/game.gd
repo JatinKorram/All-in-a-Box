@@ -16,8 +16,8 @@ signal level_loaded()
 signal level_setup()
 signal ui_setup()
 
-static func get_current_level_contents() -> Node2D:
-	return instance._level_loader.current_level.contents
+static func get_current_level_content() -> Node2D:
+	return instance._level_loader.current_level.content
 
 static func get_current_level_systems() -> SystemSet:
 	return instance._level_loader.current_level.systems
