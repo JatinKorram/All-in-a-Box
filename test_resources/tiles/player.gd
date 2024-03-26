@@ -1,7 +1,7 @@
 extends GeneratedTile
 class_name Player
 
-@onready var level: Level = Game.get_level_contents()
+@onready var world: World = Game.get_current_level_contents()
 @onready var interactor: GridBasedInteractor = GridBasedInteractor.new()
 
 func _ready():
@@ -24,4 +24,4 @@ func _process(_delta):
 		direction = Vector2i.RIGHT
 	if direction == Vector2i.ZERO:
 		return
-	level.push_cell(grid_position, direction)
+	world.push_cell(grid_position, direction)

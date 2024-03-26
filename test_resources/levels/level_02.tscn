@@ -1,14 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dudqk452s5ww1"]
+[gd_scene load_steps=5 format=3 uid="uid://dudqk452s5ww1"]
 
-[ext_resource type="Script" path="res://sokoban/level.gd" id="1_b4us6"]
 [ext_resource type="TileSet" uid="uid://dn6f133wbat1k" path="res://test_resources/new_tile_set.tres" id="1_e8qtj"]
+[ext_resource type="Script" path="res://level/level.gd" id="1_rbw2a"]
 [ext_resource type="Resource" uid="uid://bvt2tj2fdo8lb" path="res://test_resources/tiles/default_map.tres" id="2_8kh22"]
+[ext_resource type="Script" path="res://sokoban/world.gd" id="2_etoma"]
 
-[node name="LevelTemplate" type="TileMap"]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("contents")]
+script = ExtResource("1_rbw2a")
+contents = NodePath("LevelTemplate")
+
+[node name="LevelTemplate" type="TileMap" parent="."]
 scale = Vector2(3, 3)
 tile_set = ExtResource("1_e8qtj")
 format = 2
 layer_0/tile_data = PackedInt32Array(458758, 0, 1, 524294, 0, 1, 589830, 0, 1, 458759, 0, 1, 589831, 0, 1, 262152, 0, 1, 327688, 0, 1, 393224, 0, 1, 458760, 0, 1, 589832, 0, 1, 262153, 0, 1, 589833, 0, 1, 262154, 0, 1, 393226, 0, 1, 458762, 0, 1, 589834, 0, 1, 262155, 0, 1, 393227, 0, 1, 458763, 0, 1, 524299, 0, 1, 589835, 0, 1, 262156, 0, 1, 393228, 0, 1, 262157, 0, 1, 393229, 0, 1, 262158, 0, 1, 393230, 0, 1, 458766, 0, 1, 524302, 0, 1, 589838, 0, 1, 262159, 0, 1, 589839, 0, 1, 262160, 0, 1, 327696, 0, 1, 393232, 0, 1, 458768, 0, 1, 524304, 0, 1, 589840, 0, 1, 524295, 65536, 0, 524297, 131072, 0, 524303, 65536, 1)
 layer_1/tile_data = PackedInt32Array(262152, 1, 0, 393226, 1, 0, 458758, 1, 0, 589835, 131073, 1, 589840, 131073, 1, 458760, 131073, 1, 458762, 1, 1, 589838, 1, 1, 589830, 1, 1, 262160, 131073, 0, 393230, 131073, 0, 327696, 131073, 2, 393232, 131073, 2, 458768, 131073, 2, 524304, 131073, 2, 327688, 131073, 2, 393224, 131073, 2, 524294, 131073, 2, 524299, 131073, 2, 524302, 131073, 2, 458766, 131073, 2, 589839, 65537, 1, 393229, 65537, 1, 393228, 65537, 1, 393227, 65537, 1, 458763, 131073, 0, 589831, 65537, 0, 589832, 65537, 0, 589833, 65537, 0, 589834, 65537, 0, 458759, 65537, 0, 262153, 65537, 0, 262154, 65537, 0, 262155, 65537, 0, 262156, 65537, 0, 262157, 65537, 0, 262158, 65537, 0, 262159, 65537, 0)
-script = ExtResource("1_b4us6")
+script = ExtResource("2_etoma")
 info_map = ExtResource("2_8kh22")

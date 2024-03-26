@@ -3,7 +3,7 @@ class_name GridBasedInteractor
 
 @export_flags_2d_physics var interactable_layers: int = 0
 
-@onready var level: Level = Game.get_level_contents()
+@onready var world: World = Game.get_current_level_contents()
 @onready var collision_shape: CollisionShape2D = CollisionShape2D.new()
 
 var interact_mode: bool = false
@@ -15,8 +15,8 @@ func _enter_tree():
 func _ready():
 	collision_mask = interactable_layers
 	var shape: RectangleShape2D = RectangleShape2D.new()
-	shape.size = Vector2.ONE * (level.cell_size - level.generated_colliders_padding)
-	collision_shape.position = Vector2.ONE * level.cell_size / 2
+	shape.size = Vector2.ONE * (world.cell_size - world.generated_colliders_padding)
+	collision_shape.position = Vector2.ONE * world.cell_size / 2
 	collision_shape.shape = shape
 	add_child(collision_shape)
 	var cursor_sprite: Sprite2D = Sprite2D.new()
@@ -32,9 +32,9 @@ func _process(_delta):
 			if interactables.size() != 0:
 				interactables[0].interaction.emit()
 			position = Vector2.ZERO
-			(Game.get_ui_contents() as UIScreenSet).disable_current_screen()
+			Game.get_current_ui_screens().disable_current_screen()
 		else:
-			(Game.get_ui_contents() as UIScreenSet).switch_to_screen(1)
+			Game.get_current_ui_screens().switch_to_screen(1)
 		interact_mode = !interact_mode
 		visible = interact_mode
 	if not interact_mode:
@@ -50,4 +50,4 @@ func _process(_delta):
 		direction = Vector2i.RIGHT
 	if direction == Vector2i.ZERO:
 		return
-	position = Vector2(direction) * level.cell_size
+	position = Vector2(direction) * world.cell_size

@@ -1,5 +1,5 @@
 extends TileMap
-class_name Level
+class_name World
 
 @export var cell_size: int = 16
 @export var template_layer: int

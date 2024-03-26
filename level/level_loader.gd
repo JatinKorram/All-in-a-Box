@@ -1,10 +1,10 @@
 extends Node2D
-class_name LevelSystem
+class_name LevelLoader
 
 @export var levels: Array[LevelInfo]
 
 var current_level_index: int = -1
-var current_contents: Node2D = null
+var current_level: Level = null
 
 func _enter_tree():
 	if levels.size() == 0:
@@ -15,8 +15,8 @@ func _load_contents(level_index: int) -> Node2D:
 		print_debug("[LV] Load request receieved for out of bounds index: ", level_index)
 		return null
 	if current_level_index != -1:
-		current_contents.queue_free()
-	current_contents = levels[level_index].scene.instantiate()
-	add_child(current_contents)
+		current_level.queue_free()
+	current_level = levels[level_index].scene.instantiate()
+	add_child(current_level)
 	current_level_index = level_index
-	return current_contents
+	return current_level

@@ -4,12 +4,15 @@ class_name UIScreenSet
 var current_screen: UIScreen = null
 var screen_count: int = 0
 
-func _ready():
+func _enter_tree():
+	Game.instance.connect("ui_setup", _setup)
+
+func _setup():
 	screen_count = get_child_count()
 	if screen_count == 0:
-		print_debug("[UISS] No screens have been added.")
 		return
 	for screen: UIScreen in get_children():
+		screen.disabled.emit()
 		screen.set_process(false)
 
 func disable_current_screen() -> bool:
@@ -20,12 +23,12 @@ func disable_current_screen() -> bool:
 	current_screen = null
 	return true
 
-func switch_to_screen(index: int) -> bool:
+func switch_to_screen(screen_index: int) -> bool:
 	disable_current_screen()
-	if index < 0 or index >= screen_count:
-		print_debug("[UISS] Enable request recieved for out of bounds index: ", index)
+	if screen_index < 0 or screen_index >= screen_count:
+		print_debug("[UISS] Switch request recieved for out of bounds index: ", screen_index)
 		return false
-	var screen: UIScreen = get_child(index) as UIScreen
+	var screen: UIScreen = get_child(screen_index) as UIScreen
 	current_screen = screen
 	screen.set_process(true)
 	screen.enabled.emit()
