@@ -5,7 +5,7 @@ var current_screen: UIScreen = null
 var screen_count: int = 0
 
 func _enter_tree():
-	Game.instance.connect("ui_setup", _setup)
+	Game.connect_signal("ui_setup", _setup)
 
 func _setup():
 	screen_count = get_child_count()

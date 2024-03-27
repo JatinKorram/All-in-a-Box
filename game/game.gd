@@ -40,6 +40,9 @@ static func get_systems() -> SystemSet:
 static func load_level(level_index: int) -> bool:
 	return instance._load_level(level_index)
 
+static func connect_signal(signal_name: StringName, callable: Callable):
+	instance.connect(signal_name, callable)
+
 func _enter_tree():
 	instance = self
 
@@ -54,6 +57,3 @@ func _load_level(level_index: int) -> bool:
 	ui_setup.emit()
 	level_loaded.emit()
 	return true
-
-func _ready():
-	_load_level(0)

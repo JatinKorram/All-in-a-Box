@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://test_resources/uis/level_fail_screen.gd" id="2_40wd2"]
 [ext_resource type="Script" path="res://test_resources/uis/level_interaction_screen.gd" id="3_57cn6"]
 [ext_resource type="Script" path="res://game/system_set.gd" id="5_8prvx"]
-[ext_resource type="Script" path="res://test_resources/levels/level_shortcuts.gd" id="6_hhppr"]
+[ext_resource type="Script" path="res://test_resources/systems/level_shortcuts.gd" id="6_hhppr"]
 
 [node name="UI" type="Control" node_paths=PackedStringArray("screens", "systems")]
 layout_mode = 3

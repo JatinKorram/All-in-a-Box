@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3wpvtpukci2k"]
+[gd_scene load_steps=7 format=3 uid="uid://b3wpvtpukci2k"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_ptfi4"]
 [ext_resource type="TileSet" uid="uid://dn6f133wbat1k" path="res://test_resources/new_tile_set.tres" id="2_351nt"]
 [ext_resource type="Script" path="res://sokoban/world.gd" id="2_i2s0i"]
 [ext_resource type="Resource" uid="uid://bvt2tj2fdo8lb" path="res://test_resources/tiles/default_map.tres" id="3_c7cdi"]
+[ext_resource type="Script" path="res://game/system_set.gd" id="5_cqhkl"]
+[ext_resource type="Script" path="res://test_resources/systems/level_states.gd" id="6_p0k7g"]
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("content")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("content", "systems")]
 script = ExtResource("1_ptfi4")
 content = NodePath("Level 01")
+systems = NodePath("SystemSet")
 
 [node name="Level 01" type="TileMap" parent="."]
 scale = Vector2(3, 3)
@@ -18,3 +21,9 @@ layer_1/name = "Wall Visuals"
 layer_1/tile_data = PackedInt32Array(458760, 1, 0, 262156, 1, 0, 262158, 131073, 0, 458767, 131073, 0, 589832, 1, 1, 458766, 1, 1, 458764, 131073, 1, 589839, 131073, 1, 524303, 131073, 2, 393230, 131073, 2, 327694, 131073, 2, 524296, 131073, 2, 589833, 65537, 0, 589834, 65537, 0, 589835, 65537, 0, 589836, 65537, 0, 589837, 65537, 0, 589838, 65537, 0, 458761, 65537, 0, 458762, 65537, 0, 458763, 65537, 0, 262157, 65537, 0, 327692, 131073, 2, 393228, 131073, 2)
 script = ExtResource("2_i2s0i")
 info_map = ExtResource("3_c7cdi")
+
+[node name="SystemSet" type="Node2D" parent="."]
+script = ExtResource("5_cqhkl")
+
+[node name="LevelStates" type="Node2D" parent="SystemSet"]
+script = ExtResource("6_p0k7g")

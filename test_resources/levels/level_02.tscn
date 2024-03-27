@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dudqk452s5ww1"]
+[gd_scene load_steps=7 format=3 uid="uid://dudqk452s5ww1"]
 
 [ext_resource type="TileSet" uid="uid://dn6f133wbat1k" path="res://test_resources/new_tile_set.tres" id="1_e8qtj"]
 [ext_resource type="Script" path="res://level/level.gd" id="1_rbw2a"]
 [ext_resource type="Resource" uid="uid://bvt2tj2fdo8lb" path="res://test_resources/tiles/default_map.tres" id="2_8kh22"]
 [ext_resource type="Script" path="res://sokoban/world.gd" id="2_etoma"]
+[ext_resource type="Script" path="res://game/system_set.gd" id="5_uf8dq"]
+[ext_resource type="Script" path="res://test_resources/systems/level_states.gd" id="6_py0up"]
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("content")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("content", "systems")]
 script = ExtResource("1_rbw2a")
 content = NodePath("LevelTemplate")
+systems = NodePath("SystemSet")
 
 [node name="LevelTemplate" type="TileMap" parent="."]
 scale = Vector2(3, 3)
@@ -17,3 +20,9 @@ layer_0/tile_data = PackedInt32Array(458758, 0, 1, 524294, 0, 1, 589830, 0, 1, 4
 layer_1/tile_data = PackedInt32Array(262152, 1, 0, 393226, 1, 0, 458758, 1, 0, 589835, 131073, 1, 589840, 131073, 1, 458760, 131073, 1, 458762, 1, 1, 589838, 1, 1, 589830, 1, 1, 262160, 131073, 0, 393230, 131073, 0, 327696, 131073, 2, 393232, 131073, 2, 458768, 131073, 2, 524304, 131073, 2, 327688, 131073, 2, 393224, 131073, 2, 524294, 131073, 2, 524299, 131073, 2, 524302, 131073, 2, 458766, 131073, 2, 589839, 65537, 1, 393229, 65537, 1, 393228, 65537, 1, 393227, 65537, 1, 458763, 131073, 0, 589831, 65537, 0, 589832, 65537, 0, 589833, 65537, 0, 589834, 65537, 0, 458759, 65537, 0, 262153, 65537, 0, 262154, 65537, 0, 262155, 65537, 0, 262156, 65537, 0, 262157, 65537, 0, 262158, 65537, 0, 262159, 65537, 0)
 script = ExtResource("2_etoma")
 info_map = ExtResource("2_8kh22")
+
+[node name="SystemSet" type="Node2D" parent="."]
+script = ExtResource("5_uf8dq")
+
+[node name="LevelStates" type="Node2D" parent="SystemSet"]
+script = ExtResource("6_py0up")

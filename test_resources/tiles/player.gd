@@ -4,7 +4,14 @@ class_name Player
 @onready var world: World = Game.get_current_level_content()
 @onready var interactor: GridBasedInteractor = GridBasedInteractor.new()
 
+func _enter_tree():
+	connect("destroyed", _on_player_destroyed)
+
+func _on_player_destroyed():
+	(Game.get_current_level_systems().get_child(0) as LevelStates).player_count -= 1
+
 func _ready():
+	(Game.get_current_level_systems().get_child(0) as LevelStates).player_count += 1
 	# NOTE: Testing
 	interactor.interactable_layers = 4
 	#

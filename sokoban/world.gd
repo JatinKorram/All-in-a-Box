@@ -8,7 +8,7 @@ class_name World
 @export var generated_colliders_padding: int = 2
 
 func _enter_tree():
-	Game.instance.connect("level_setup", _setup)
+	Game.connect_signal("level_setup", _setup)
 
 func _setup():
 	_generate()
@@ -24,11 +24,13 @@ func _generate():
 	var collision_shape_offset: Vector2 = Vector2.ONE * cell_size / 2
 	for cell: Vector2i in cells:
 		var atlas_coords: Vector2i = get_cell_atlas_coords(template_layer, cell)
+		var i: int = 0
 		for tile: TileInfo in info_map.tiles:
 			if atlas_coords == tile.atlas_coords:
 				var node: GeneratedTile = GeneratedTile.new()
 				if tile.attached_script != null:
 					node.set_script(tile.attached_script)
+				node.type_index = i
 				node.grid_position = cell
 				node.position = cell * cell_size
 				if tile.is_trigger:
@@ -51,8 +53,9 @@ func _generate():
 				sprite.z_index = tile.z_index
 				sprite.centered = false
 				node.add_child(sprite)
-				call_deferred("add_child", node)
+				add_child.call_deferred(node)
 				break
+			i += 1
 
 func push_cell(cell: Vector2i, direction: Vector2i) -> bool:
 	return _push_cell(cell, direction, cell)
@@ -91,3 +94,13 @@ func _move_generated_nodes(start_cell: Vector2i, end_cell: Vector2i, direction: 
 			relative_pos.y *= direction.y
 			if relative_pos.y >= 0 and relative_pos.y <= absi((start_cell - end_cell).y):
 				node.move(direction)
+
+func _destroy_cell(cell: Vector2i, is_trigger: bool):
+	set_cell(template_layer, cell)
+	for node: GeneratedTile in get_children():
+		if node.monitoring != is_trigger:
+			continue
+		if node.grid_position == cell:
+			node.destroyed.emit()
+			node.queue_free()
+			break

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TileInfoMap" load_steps=12 format=3 uid="uid://bvt2tj2fdo8lb"]
+[gd_resource type="Resource" script_class="TileInfoMap" load_steps=14 format=3 uid="uid://bvt2tj2fdo8lb"]
 
 [ext_resource type="Script" path="res://sokoban/tile_info_map.gd" id="1_ek41k"]
 [ext_resource type="Script" path="res://test_resources/tiles/player.gd" id="2_go6c0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://test_resources/tiles/flag.gd" id="4_b0n51"]
 [ext_resource type="Script" path="res://test_resources/tiles/inventory.gd" id="5_u0u0f"]
 [ext_resource type="Script" path="res://test_resources/tiles/spikes.gd" id="6_udmnp"]
+[ext_resource type="Script" path="res://test_resources/tiles/hole.gd" id="7_ygd3h"]
 
 [sub_resource type="Resource" id="Resource_mq5yk"]
 script = ExtResource("3_klox5")
@@ -44,7 +45,7 @@ script = ExtResource("3_klox5")
 name = "Inventory"
 attached_script = ExtResource("5_u0u0f")
 atlas_coords = Vector2i(2, 0)
-z_index = null
+z_index = 0
 is_invisible = null
 is_trigger = null
 collision_layer = 4
@@ -61,6 +62,17 @@ is_trigger = true
 collision_layer = 0
 collision_mask = 2
 
+[sub_resource type="Resource" id="Resource_gwy06"]
+script = ExtResource("3_klox5")
+name = "Hole"
+attached_script = ExtResource("7_ygd3h")
+atlas_coords = Vector2i(2, 2)
+z_index = -1
+is_invisible = false
+is_trigger = true
+collision_layer = 0
+collision_mask = 7
+
 [resource]
 script = ExtResource("1_ek41k")
-tiles = Array[ExtResource("3_klox5")]([SubResource("Resource_mq5yk"), SubResource("Resource_1xfiq"), SubResource("Resource_ioyel"), SubResource("Resource_ofwfn"), SubResource("Resource_kuudu")])
+tiles = Array[ExtResource("3_klox5")]([SubResource("Resource_mq5yk"), SubResource("Resource_1xfiq"), SubResource("Resource_ioyel"), SubResource("Resource_ofwfn"), SubResource("Resource_kuudu"), SubResource("Resource_gwy06")])
