@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cn7fqn2eruq83"]
 
-[ext_resource type="Script" path="res://ui/ui_screen_set.gd" id="1_a5pll"]
-[ext_resource type="Script" path="res://ui/ui.gd" id="1_vu43r"]
+[ext_resource type="Script" path="res://core/ui/ui_screen_set.gd" id="1_a5pll"]
+[ext_resource type="Script" path="res://core/ui/ui.gd" id="1_vu43r"]
 
 [node name="UI" type="Control" node_paths=PackedStringArray("screens")]
 layout_mode = 3

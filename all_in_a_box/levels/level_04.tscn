@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://cgals8scefp0s"]
 
-[ext_resource type="Script" path="res://level/level.gd" id="1_y1glr"]
-[ext_resource type="TileSet" uid="uid://dn6f133wbat1k" path="res://test_resources/new_tile_set.tres" id="2_ncggi"]
+[ext_resource type="Script" path="res://core/level/level.gd" id="1_y1glr"]
+[ext_resource type="TileSet" uid="uid://dn6f133wbat1k" path="res://all_in_a_box/new_tile_set.tres" id="2_ncggi"]
 [ext_resource type="Script" path="res://sokoban/world.gd" id="3_d4ygq"]
-[ext_resource type="Resource" uid="uid://bvt2tj2fdo8lb" path="res://test_resources/tiles/default_map.tres" id="4_pk2oh"]
-[ext_resource type="Script" path="res://game/system_set.gd" id="5_ebmsc"]
-[ext_resource type="Script" path="res://test_resources/systems/level_states.gd" id="6_yk4fd"]
+[ext_resource type="Resource" uid="uid://bvt2tj2fdo8lb" path="res://all_in_a_box/tiles/default_map.tres" id="4_pk2oh"]
+[ext_resource type="Script" path="res://core/game/system_set.gd" id="5_ebmsc"]
+[ext_resource type="Script" path="res://all_in_a_box/systems/level_states.gd" id="6_yk4fd"]
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("content", "systems")]
 script = ExtResource("1_y1glr")

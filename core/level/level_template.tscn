@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dc2715t5ykqwb"]
 
-[ext_resource type="Script" path="res://level/level.gd" id="1_b4fnr"]
-[ext_resource type="Script" path="res://game/system_set.gd" id="2_mr8l5"]
+[ext_resource type="Script" path="res://core/level/level.gd" id="1_b4fnr"]
+[ext_resource type="Script" path="res://core/game/system_set.gd" id="2_mr8l5"]
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("content", "systems")]
 script = ExtResource("1_b4fnr")

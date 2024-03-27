@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="[PJ] Mini Jam 154"
-run/main_scene="res://test_resources/game.tscn"
+run/main_scene="res://all_in_a_box/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -26,7 +26,7 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
-"res://test_resources/": "gray"
+"res://all_in_a_box/": "gray"
 }
 
 [filesystem]
